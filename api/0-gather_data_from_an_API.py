@@ -6,20 +6,16 @@ import requests
 def TODO_list_progress(employee_id):
 
     api_url = "https://jsonplaceholder.typicode.com"
+    users_url = f"{api_url}/users/{employee_id}"
+    todos_url = f"{api_url}/todos"
 
-    get_employee_name = requests.get(f"{api_url}/users/{employee_id}")
-    if get_employee_name.status_code != 200:
-        print("NOT FOUND!")
-        return
+    get_employee_name = requests.get(users_url)
     employee_name = get_employee_name.json().get('name')
 
-    todos_total = requests.get(f"{api_url}/todos",
-                               params={'userID': employee_id})
-    if todos_total.status_code != 200:
-        print("Failed to get that TODO list bud.")
-        return
+    params = {'userId': employee_id}
+    todos_total = requests.get(todos_url, params=params)
     todos = todos_total.json()
-    finished_tasks = [todos for todo in todos if todo['completed']]
+    finished_tasks = [todo for todo in todos if todo['completed']]
 
     print(
         f"Employee {employee_name} is done with tasks"
@@ -27,3 +23,8 @@ def TODO_list_progress(employee_id):
     )
     for task in finished_tasks:
         print(f"\t {task['title']}")
+
+if __name__ == "__main__":
+    import sys
+
+    TODO_list_progress(int(sys.argv[1]))
