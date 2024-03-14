@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ File for pulling from APIs. """
 import requests
+import sys
 
 
 def TODO_list_progress(employee_id):
@@ -24,7 +25,7 @@ def TODO_list_progress(employee_id):
     for task in finished_tasks:
         print(f"\t {task['title']}")
 
+
 if __name__ == "__main__":
-    import sys
 
     TODO_list_progress(int(sys.argv[1]))
