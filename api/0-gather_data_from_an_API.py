@@ -21,7 +21,9 @@ def TODO_list_progress(employee_id):
     todos = todos_total.json()
     finished_tasks = [todos for todo in todos if todo['completed']]
 
-    print(f"Employee {employee_name} is 
-          done with tasks({len(finished_tasks)}/{len(todos)}):")
+    print(
+        f"Employee {employee_name} is done with tasks"
+        f"({len(finished_tasks)}/{len(todos)}):"
+    )
     for task in finished_tasks:
         print(f"\t {task['title']}")
