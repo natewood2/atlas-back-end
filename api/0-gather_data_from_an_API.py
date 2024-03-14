@@ -13,7 +13,7 @@ def TODO_list_progress(employee_id):
         return
     employee_name = get_employee_name.json().get('name')
 
-    todos_total = requests.get(f"{api_url}/todos", 
+    todos_total = requests.get(f"{api_url}/todos",
                                params={'userID': employee_id})
     if todos_total.status_code != 200:
         print("Failed to get that TODO list bud.")
