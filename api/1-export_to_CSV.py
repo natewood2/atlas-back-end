@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ File for pulling from APIs. """
+import csv
 import requests
 import sys
-import csv
 
 
 def TODO_list_csv(employee_id):
@@ -19,9 +19,11 @@ def TODO_list_csv(employee_id):
     with open(csv_file_name, mode='w', newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for todo in todos:
-            writer.writerow([employee_id, username, todo['completed'], todo['title']])
+            writer.writerow([employee_id, username,
+                             todo['completed'], todo['title']])
 
     print("Well that worked fine...")
+
 
 if __name__ == "__main__":
 
