@@ -5,6 +5,7 @@ import json
 import requests
 import sys
 
+
 def TODO_list_all_json():
     api_url = "https://jsonplaceholder.typicode.com"
     users_url = f"{api_url}/users"
